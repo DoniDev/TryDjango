@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Welcome to Try Django
+{% endblock %}
+
+
+{% block content %}
+    {% for a in blog_list %}
+        {% include 'blog/list_inline.html' with post=a truncate=True detail=True %}
+    {% endfor %}
+{% endblock %}

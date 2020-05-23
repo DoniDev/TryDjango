@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        {% include 'blog/list_inline.html' with detail=False %}
+        <div class="col-12 mx-auto">
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_staff %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                         <button class="btn btn-danger"><a class="text-white" style="text-decoration:none" href="{% url 'post-delete' post.slug %}">Delete</a></button>
+                         <button class="btn btn-primary"><a class="text-white" style="text-decoration:none" href="{% url 'post-update' post.slug %}">Update</a></button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
